@@ -1,0 +1,6 @@
+/*.o
+/thread-test
+/test
+/*.so
+/*.lo
+/.clang-format
