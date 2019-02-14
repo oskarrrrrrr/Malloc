@@ -3,7 +3,7 @@ CFLAGS = -ggdb -Og -Wall -Wextra
 CPPFLAGS = -DDEBUG $(shell pkg-config --cflags libbsd-overlay)
 LDLIBS = $(shell pkg-config --libs libbsd-overlay) -Wl,-rpath=.
 
-all: malloc.so test thread-test
+all: malloc.so test thread-test simple
 
 %.lo: %.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -fPIC -c -o $@ $<
@@ -19,6 +19,7 @@ malloc.so: debug.lo malloc.lo wrappers.lo
 TESTS = $(wildcard tst-*.c)
 
 test: test.o $(TESTS:.c=.o) malloc.so
+simple: simple.o malloc.so
 
 thread-test: LDLIBS += -lpthread
 thread-test: thread-test.o malloc.so

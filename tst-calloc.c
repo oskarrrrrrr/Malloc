@@ -25,7 +25,7 @@
 #include <stdlib.h>
 
 /* Number of samples per size.  */
-#define N 50000
+#define N 500
 
 static void fixed_test(int size) {
   char *ptrs[N];

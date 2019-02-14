@@ -46,13 +46,15 @@ TEST(malloc) {
   if (p == NULL)
     merror("malloc (10) failed.");
 
+  //*((int64_t *)p - 2) = 0;
+
   /* realloc (p, 0) == free (p).  */
   p = realloc(p, 0);
   if (p != NULL)
     merror("realloc (p, 0) failed.");
 
   p = malloc(0);
-  if (p == NULL)
+  if (p != NULL)
     merror("malloc (0) failed.");
 
   p = realloc(p, 0);
